@@ -1,0 +1,63 @@
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import { Header } from "./header";
+import { Footer } from "./footer";
+import { ThemeProvider } from "next-themes";
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#ffffff",
+};
+
+export const metadata = {
+  metadataBase: new URL("https://karthi.page/"),
+  alternates: {
+    canonical: "/",
+  },
+  title: {
+    default: "karthi",
+    template: "%s | karthi",
+  },
+  description: "Developer with a sense of play and attention to detail.",
+  manifest: "/favicons/manifest.json",
+  icons: {
+    icon: "/favicons/favicon.ico",
+    apple: "/favicons/apple-touch-icon-v2.png",
+  },
+};
+
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
+      >
+        <ThemeProvider
+          enableSystem={true}
+          attribute="class"
+          storageKey="theme"
+          defaultTheme="system"
+        >
+          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)]">
+            <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20">
+              <Header />
+              {children}
+              {/* <Footer />*/}
+            </div>
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}
