@@ -17,9 +17,9 @@ export const metadata = {
   },
   title: {
     default: "karthi",
-    template: "%s | karthi",
+    // template: "%s | karthi",
   },
-  description: "Developer with a sense of play and attention to detail.",
+  description: "Design Engineer",
   manifest: "/favicons/manifest.json",
   icons: {
     icon: "/favicons/favicon.ico",
@@ -40,6 +40,9 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <title>karthi</title>
+      </head>
       <body
         className={`${geist.variable} ${geistMono.variable} bg-white tracking-tight antialiased dark:bg-zinc-950`}
       >
